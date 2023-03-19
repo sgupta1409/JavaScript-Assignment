@@ -68,8 +68,13 @@ exports.functionsAnswers = {
 
   curryIt: function (fn) {
 
-  let f1 = fn.bind(null,);n
-  let f2 = f1.bind(null,);
-  let f3 = f2.bind(null,);
-  }
+    return function(arg1){
+       return function(arg2){
+        return function(arg3){
+          return fn(arg1 , arg2 , arg3);
+        }
+       }
+    }
+ 
+  } 
 };

@@ -13,12 +13,19 @@ exports.asyncAnswers = {
 
   manipulateRemoteData: function (url) {
 
-    //  var data =  await fetch(url);
-    //  data = await data.text;
-    //  data = JSON.parse(data);
-    //   data.sort();
-    //   return data;
+    var pr = new Promise((resolve,reject)=>{
+      fetch(url).then((res)=> res.json()).then((res)=>{
 
+       var result= res.people.map((item,index)=>{
+          return item.name;
+        })
+        resolve(result.sort());
+     
+     });
+    });
+
+    return pr;
+     
   },
 
 };
